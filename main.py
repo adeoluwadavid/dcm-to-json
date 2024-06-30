@@ -50,5 +50,5 @@ async def senddicom(
             os.remove(temp_file_path)
             print(f"Temporary file {temp_file_path} removed")
 
-# if __name__ == "__main__":
-#     uvicorn.run("main:app", host="0.0.0.0", reload=True, port=8090)
+if __name__ == "__main__":
+    uvicorn.run("main:app")

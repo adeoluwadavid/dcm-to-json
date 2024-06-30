@@ -145,3 +145,4 @@ dmypy.json
 
 # pyre type checker
 .pyre/
+.vercel
