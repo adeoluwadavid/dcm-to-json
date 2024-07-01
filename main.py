@@ -1,4 +1,5 @@
 from fastapi import FastAPI, File, UploadFile, Form
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import os
 import uvicorn
@@ -9,6 +10,33 @@ import shutil
 app = FastAPI(
     docs_url="/api/docs", openapi_url="/api"
 )
+
+
+
+origins = [
+    "https://getcare-dev.eha.ng",
+    "https://getcare.eha.ng",
+    "https://ehacare-dev.eha.ng",
+    "https://www.ehacare-dev.eha.ng",
+    "https://ehacare.eha.ng",
+    "https://www.ehacare.eha.ng",
+    "https://eha.ng",
+    "https://www.eha.ng",
+    "https://stage.eha.ng",
+    "https://www.stage.eha.ng",
+    "http://localhost",
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 
 class BufferModel(BaseModel):
     buffer: Optional[bytes] = None
